@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Mumma 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #ff69b4;
+      color: white;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      margin: 0;
+      text-shadow: 0 0 10px #fff;
+    }
+    .typing-poem {
+      font-size: 1.2rem;
+      color: white;
+      max-width: 700px;
+      margin: 40px auto;
+      text-align: center;
+      line-height: 1.8;
+    }
+    .carousel {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+    .carousel-container {
+      max-width: 90%;
+      max-height: 80vh;
+      position: relative;
+    }
+    .carousel img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      display: none;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      background: #000;
+    }
+    .carousel img.active {
+      display: block;
+    }
+    .carousel-caption {
+      margin-top: 25px;
+      padding: 20px 30px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 192, 203, 0.4);
+      border-radius: 15px;
+      font-size: 1.8rem;
+      font-weight: normal;
+      color: #fff;
+      font-family: 'Great Vibes', cursive;
+      text-align: center;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+      backdrop-filter: blur(10px);
+      animation: fadeInCaption 1.5s ease;
+    }
+    @keyframes fadeInCaption {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Romantic Scenic Surprise Section */
+    .surprise {
+      position: relative;
+      text-align: center;
+      padding: 40px 20px;
+      background: url('C:\Users\Bhaskar\Downloads\thumb-1920-1381464.png') no-repeat center center/cover;
+      color: white;
+      overflow: hidden;
+    }
+    .surprise::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .surprise * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hidden-message {
+      display: none;
+      animation: fadeIn 2s forwards;
+      margin-top: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .love-letter {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 25px;
+      border-radius: 15px;
+      border: 2px solid #ffb6c1;
+      max-width: 800px;
+      margin: 0 auto;
+      white-space: pre-line;
+      box-shadow: 0 0 25px rgba(255, 182, 193, 0.5);
+    }
+    .glow-text {
+      font-size: 2rem;
+      color: #ff69b4;
+      font-family: 'Great Vibes', cursive;
+      margin-top: 30px;
+      text-align: center;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff69b4;
+      }
+      to {
+        text-shadow: 0 0 25px #ff69b4, 0 0 35px #ff1493;
+      }
+    }
+    video {
+      max-width: 90%;
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+<canvas id="heartCanvas"></canvas>
+<canvas id="fireworksCanvas"></canvas>
+
+<header>
+  <h1>Happy Birthday Mumma 🎂</h1>
+  <p>To my one and only, Amulii 💖</p>
+</header>
+
+<div class="typing-poem" id="poemText"></div>
+
+<div class="carousel">
+  <div class="carousel-container">
+    <img src="image1.jpg" class="active" data-caption="Our first perfect moment 💑">
+    <img src="image2.jpg" data-caption="Your smile lights up my world 🌟">
+    <img src="image3.jpg" data-caption="Together forever, never apart 💞">
+    <img src="image4.jpg" data-caption="Every second with you is special ⏳">
+  </div>
+  <div class="carousel-caption" id="caption">Our first perfect moment 💑</div>
+</div>
+
+<div class="surprise" id="surpriseSection">
+  <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem;">Click for a Romantic Surprise 💝</h2>
+  <button onclick="revealSurprise()" style="padding: 10px 20px; font-size: 1rem; border-radius: 8px; background: #ff69b4; color: white; border: none;">Reveal</button>
+
+  <div id="secret" class="hidden-message">
+    <div class="glow-text">Happy Birthday Mumma 🎉💖</div>
+    <div class="love-letter" id="typedLetter"></div>
+    <video controls src="video.mp4"></video>
+    <div class="glow-text">Forever Yours, Guddu 💘</div>
+  </div>
+</div>
+
+
+<script>
+// Typing Poem
+const poem = `From sunrise to moon’s gentle glow,\nMy love for you continues to grow.\nIn your smile, I find my peace,\nIn your hug, all worries cease.\n\nYou’re my laughter, my heart’s delight,\nMy guiding star in every night.\nToday we celebrate your grace,\nWith kisses, cuddles, and warm embrace.\n\nForever yours — your Guddu 💕`;
+let i = 0;
+function typePoem() {
+  if (i < poem.length) {
+    document.getElementById("poemText").innerHTML += poem.charAt(i) === '\n' ? '<br>' : poem.charAt(i);
+    i++;
+    setTimeout(typePoem, 50);
+  }
+}
+typePoem();
+
+// Heart Animation
+const heartCanvas = document.getElementById("heartCanvas");
+const ctx = heartCanvas.getContext("2d");
+heartCanvas.width = window.innerWidth;
+heartCanvas.height = window.innerHeight;
+let hearts = [];
+function Heart() {
+  this.x = Math.random() * heartCanvas.width;
+  this.y = Math.random() * heartCanvas.height;
+  this.size = Math.random() * 5 + 2;
+  this.speedY = Math.random() * 1 + 0.5;
+  this.opacity = Math.random() * 0.5 + 0.5;
+}
+Heart.prototype.update = function() {
+  this.y -= this.speedY;
+  if (this.y < 0) {
+    this.y = heartCanvas.height;
+    this.x = Math.random() * heartCanvas.width;
+  }
+}
+Heart.prototype.draw = function() {
+  ctx.globalAlpha = this.opacity;
+  ctx.fillStyle = "#ff69b4";
+  ctx.beginPath();
+  ctx.moveTo(this.x, this.y);
+  ctx.bezierCurveTo(this.x + 2, this.y - 4, this.x + 8, this.y - 4, this.x + 8, this.y);
+  ctx.bezierCurveTo(this.x + 8, this.y + 4, this.x + 4, this.y + 8, this.x, this.y + 12);
+  ctx.bezierCurveTo(this.x - 4, this.y + 8, this.x - 8, this.y + 4, this.x - 8, this.y);
+  ctx.bezierCurveTo(this.x - 8, this.y - 4, this.x - 2, this.y - 4, this.x, this.y);
+  ctx.fill();
+}
+function animateHearts() {
+  ctx.clearRect(0, 0, heartCanvas.width, heartCanvas.height);
+  hearts.forEach(h => { h.update(); h.draw(); });
+  requestAnimationFrame(animateHearts);
+}
+for (let i = 0; i < 100; i++) hearts.push(new Heart());
+animateHearts();
+
+// Fireworks
+const fireworksCanvas = document.getElementById("fireworksCanvas");
+const fctx = fireworksCanvas.getContext("2d");
+fireworksCanvas.width = window.innerWidth;
+fireworksCanvas.height = window.innerHeight;
+let particles = [];
+function Particle(x, y) {
+  this.x = x;
+  this.y = y;
+  this.radius = Math.random() * 3 + 2;
+  this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+  this.velocityX = (Math.random() - 0.5) * 8;
+  this.velocityY = (Math.random() - 0.5) * 8;
+  this.alpha = 1;
+}
+Particle.prototype.update = function() {
+  this.x += this.velocityX;
+  this.y += this.velocityY;
+  this.alpha -= 0.01;
+}
+Particle.prototype.draw = function() {
+  fctx.globalAlpha = this.alpha;
+  fctx.beginPath();
+  fctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+  fctx.fillStyle = this.color;
+  fctx.fill();
+}
+function fireworks() {
+  fctx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+  particles.forEach((p, i) => {
+    p.update();
+    p.draw();
+    if (p.alpha <= 0) particles.splice(i, 1);
+  });
+  requestAnimationFrame(fireworks);
+}
+fireworks();
+
+// Surprise Reveal
+function revealSurprise() {
+  document.getElementById('secret').style.display = 'block';
+  //const audio = document.querySelector('audio');
+  //audio.src = "perfect.mp3";
+  //audio.play();
+
+  const x = Math.random() * fireworksCanvas.width;
+  const y = Math.random() * fireworksCanvas.height / 2;
+  for (let i = 0; i < 60; i++) {
+    particles.push(new Particle(x, y));
+  }
+
+  const message = `💌 My Precious Mumma,\n\nYou are the reason my heart beats with joy.\nYour smile is my sunrise, your hug is my peace.\n\nOn your special day, I wish you endless happiness.\nYou are my today, my tomorrow, and my always.\n\nHappy Birthday, my angel.\n\nWith all my love,\nGuddu 💘`;
+  let j = 0;
+  const letterDiv = document.getElementById("typedLetter");
+  letterDiv.innerHTML = "";
+  function typeLetter() {
+    if (j < message.length) {
+      letterDiv.innerHTML += message.charAt(j) === '\n' ? "<br>" : message.charAt(j);
+      j++;
+      setTimeout(typeLetter, 40);
+    }
+  }
+  typeLetter();
+}
+
+// Image Carousel
+const slides = document.querySelectorAll(".carousel img");
+const caption = document.getElementById("caption");
+let current = 0;
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    if (i === index) slide.classList.add("active");
+  });
+  caption.innerText = slides[index].dataset.caption;
+}
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+setInterval(nextSlide, 4000);
+</script>
+</body>
+</html>
